@@ -69,13 +69,14 @@ function existe($pseudo){
 
 function inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,&$resultat=array()) {
 	require ("./modele/connect.php"); 
+	$mdp_encode=sha1($mdp);
 
 	$sql='INSERT INTO client(nom, pseudo, mdp, email,nomE,adresseE) values (:nom, :pseudo, :mdp, :email,:nomE,:adresseE)';
 	try {
 		$commande = $pdo->prepare($sql);
 		$commande->bindParam(':nom', $nom);
 		$commande->bindParam(':pseudo', $pseudo);
-		$commande->bindParam(':mdp', $mdp);
+		$commande->bindParam(':mdp', $mdp_encode);
 		$commande->bindParam(':email', $email);
         $commande->bindParam(':nomE', $nomE);
         $commande->bindParam(':adresseE', $adresseE);
