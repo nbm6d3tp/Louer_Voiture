@@ -1,0 +1,1 @@
+<!-- La page contient la liste de tous les véhicules en stock -->

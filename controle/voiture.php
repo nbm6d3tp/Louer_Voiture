@@ -1,0 +1,1 @@
+//controleur contenant les fonctionalités qui concernent à lister les voitures  (lister les voitures loués par un entreprise, lister tous les voitures loués, afficher la page pour confirmer le location, ...)

@@ -1,3 +1,5 @@
+<!-- La page d'accueil, affichée pour le Loueur, à faire (Minh) *** -->
+
 <!doctype html>
 <html lang="fr">
 

@@ -1,3 +1,4 @@
+<!-- La page d'accueil, affichée pour les entreprises abonnés, à faire (Minh) *** -->
 <!doctype html>
 <html lang="fr">
 

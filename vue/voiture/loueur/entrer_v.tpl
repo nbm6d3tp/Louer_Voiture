@@ -1,0 +1,1 @@
+<!-- La page contenant la formulaire qui permet un loueur entrer une nouveau type de véhicule (l'ajouter à la bbd)  -->

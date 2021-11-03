@@ -1,3 +1,6 @@
+<!-- La page d'inscription pour les entreprises non abonnés -->
+
+
 <!doctype html>
 <html lang="fr">
 

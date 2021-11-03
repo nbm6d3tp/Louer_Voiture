@@ -46,7 +46,7 @@ function verif_ident_e_bd($pseudo, $mdp,&$resultat) {
 	 
 }
 
-function existe($pseudo){
+function existe($pseudo){ //verifier si le compte on veut creer (inscrire) est deja dans la bdd
 
 	require ("./modele/connect.php");
 	$sql="SELECT pseudo FROM `client`  where pseudo=:pseudo";

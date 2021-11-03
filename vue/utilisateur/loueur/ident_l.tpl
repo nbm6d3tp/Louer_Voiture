@@ -1,3 +1,5 @@
+<!-- La page d'identification pour le Loueur -->
+
 <!doctype html>
 <html lang="fr">
 

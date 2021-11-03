@@ -1,0 +1,1 @@
+<!-- La page contient la liste de tous les véhicules loués par tous les entreprises (c'est loueur abonné qui utilise cette fonctionalité) -->

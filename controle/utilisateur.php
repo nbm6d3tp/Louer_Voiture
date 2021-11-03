@@ -1,6 +1,8 @@
 <?php 
 
-function ident_l() {
+//controleur contenant les fonctionalités qui concernent à l'utilisateur (identification, inscription, afficher l'accueil)
+
+function ident_l() { //fonction ident pour le Loueur
 	$pseudo=  isset($_POST['pseudo'])?($_POST['pseudo']):'';
 	$mdp=  isset($_POST['mdp'])?($_POST['mdp']):'';
 	$msg='';
@@ -25,7 +27,7 @@ function ident_l() {
     }	
 }
 
-function ident_e() {
+function ident_e() { //fonction ident pour les Entreprises
 	$pseudo=  isset($_POST['pseudo'])?($_POST['pseudo']):'';
 	$mdp=  isset($_POST['mdp'])?($_POST['mdp']):'';
 	$msg='';
@@ -50,28 +52,28 @@ function ident_e() {
     }	
 }
 
-function verif_ident_l($pseudo,$mdp,&$resultat) {
+function verif_ident_l($pseudo,$mdp,&$resultat) { //fonction verifier l'identification pour le Loueur
 	require ('./modele/utilisateur_bd.php');
 	return verif_ident_l_BD($pseudo,$mdp,$resultat);
 }
 
-function verif_ident_e($pseudo,$mdp,&$resultat) {
+function verif_ident_e($pseudo,$mdp,&$resultat) { //fonction verifier l'identification pour les entreprises
 	require ('./modele/utilisateur_bd.php');
 	return verif_ident_e_BD($pseudo,$mdp,$resultat);
 }
 
-function accueil_l() {
+function accueil_l() { //fonction affichier l'accueil pour le Loueur, à faire (Minh) *** 
 	$nom = $_SESSION['profil']['nom'];
 	require ("./vue/utilisateur/loueur/accueil_l.tpl");
 }
 
-function accueil_e_a() {
+function accueil_e_a() { //fonction affichier l'accueil pour les entreprises abonnés/non abonnés, à faire (Rémi) ***
 	$nom = $_SESSION['profil']['nom'];
 	require ("./vue/utilisateur/entreprise/accueil_e_a.tpl");
 }
 
 
-function inscrire(){
+function inscrire(){ //fonction d'inscription
 
 	$nom=  isset($_POST['nom'])?($_POST['nom']):'';
 	$pseudo= isset($_POST['pseudo'])?($_POST['pseudo']):'';
@@ -120,7 +122,7 @@ function inscrire(){
 
 }
 
-function deconnecter(){
+function deconnecter(){ //fonction pour déconnecter
 	session_destroy();
 }
 
