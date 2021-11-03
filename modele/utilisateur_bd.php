@@ -46,22 +46,31 @@ function verif_ident_e_bd($pseudo, $mdp,&$resultat) {
 	 
 }
 
-function inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,&$resultat=array()) {
-	global $msg,$ins;
-	require ("./modele/connect.php"); // kết nối vào BD
-	$sql="SELECT pseudo FROM `client`  where pseudo=:pseudo";
-	$commande = $pdo->prepare($sql);
-	$commande->bindParam(':pseudo', $pseudo);
-	$commande->execute();
-	$bool=$commande->fetch(PDO::FETCH_ASSOC);
+function existe($pseudo){
 
-	if($bool!=null){
-		$msg="Ce compte deja existe";
-		require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
+	require ("./modele/connect.php");
+	$sql="SELECT pseudo FROM `client`  where pseudo=:pseudo";
+	
+	try {
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':pseudo', $pseudo);
+		$commande->execute();
+		$bool=$commande->fetch(PDO::FETCH_ASSOC);
+		if($bool!=null)return true;
+		else return false;
 	}
-	else{
-		
-		$sql='INSERT INTO client(nom, pseudo, mdp, email,nomE,adresseE) values (:nom, :pseudo, :mdp, :email,:nomE,:adresseE)';
+	
+	catch (PDOException $e) {
+		echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+		die(); // On arrête tout.
+	}
+
+}
+
+function inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,&$resultat=array()) {
+	require ("./modele/connect.php"); 
+
+	$sql='INSERT INTO client(nom, pseudo, mdp, email,nomE,adresseE) values (:nom, :pseudo, :mdp, :email,:nomE,:adresseE)';
 	try {
 		$commande = $pdo->prepare($sql);
 		$commande->bindParam(':nom', $nom);
@@ -72,11 +81,14 @@ function inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,&$resultat=array()
         $commande->bindParam(':adresseE', $adresseE);
 		$commande->execute();
 		
-        $resultat = $commande->fetch(PDO::FETCH_ASSOC);
+		$sql="SELECT * FROM `client`  where pseudo=:pseudo";
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':pseudo', $pseudo);
+		$bool=$commande->execute();
 
-		$msg="Succes d'inscription"; 
-		$ins=true;
-		require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
+		if($bool)$resultat = $commande->fetch(PDO::FETCH_ASSOC);
+		if ($resultat== null) return false; 
+		else return true;
 		}
 	
 	catch (PDOException $e) {
@@ -84,7 +96,6 @@ function inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,&$resultat=array()
 		die(); // On arrête tout.
 	}
 	}
-}
 
 
 ?>

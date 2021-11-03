@@ -16,7 +16,9 @@ function ident_l() {
 		}
 	    else { 
             unset($_SESSION['profil']);
-			$_SESSION['profil']['nom'] = $resultat['nom'];			
+			unset($_SESSION['role']);
+			$_SESSION['profil']['nom'] = $resultat['nom'];
+			$_SESSION['role']="loueur";			
 			$url = "index.php?controle=utilisateur&action=accueil_l";
 			header ("Location:" . $url) ;
 		}
@@ -39,7 +41,9 @@ function ident_e() {
 		}
 	    else { 
             unset($_SESSION['profil']);
-			$_SESSION['profil']['nom'] = $resultat['nom'];			
+			unset($_SESSION['role']);
+			$_SESSION['profil']['nom'] = $resultat['nom'];
+			$_SESSION['role']="entreprise";				
 			$url = "index.php?controle=utilisateur&action=accueil_e_a";
 			header ("Location:" . $url) ;
 		}
@@ -85,24 +89,39 @@ function inscrire(){
     if  ($nom==''||$pseudo==''||$mdp==''||$email==''||$mdp_cf==''||$nomE==''||$adresseE==''){
 		require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
 	}
-    
     else if($mdp!=$mdp_cf){
         $msg= "Les mots de passe ne correspondent pas";
         require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
     }       
-     
     else{
         require_once ('./modele/utilisateur_bd.php');
-
-        //còn cần tách riêng kt xem tk tồn tại chưa với chèn tk mới vào thành 2 fonction khác nhau
-        inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,$resultat);
-
-        unset($_SESSION['profil']);
-        $_SESSION['profil']['nom'] = $resultat['nom'];
+		if(existe($pseudo)){
+			$msg='Compte deja existe';
+			require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
+		}
+		else{
+			if(inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,$resultat)){
+				$msg="Succes d'inscription"; 
+				$ins=true;
+				unset($_SESSION['profil']);
+				unset($_SESSION['role']);
+				$_SESSION['profil']['nom'] = $resultat['nom'];
+				$_SESSION['role']="entreprise";	
+				require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
+			}
+			else{
+				$msg="Echec d'inscription"; 
+				require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
+			}
+		}
     
      }
     
 
+}
+
+function deconnecter(){
+	session_destroy();
 }
 
 ?>
