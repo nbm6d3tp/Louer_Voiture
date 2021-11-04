@@ -1,4 +1,3 @@
-
 <?php
 
 function entrer(){
@@ -44,6 +43,21 @@ function entrer(){
     }
     
     
+}
+
+
+function afficher_v_stock(){
+    $resultat=array();
+    $msg='';
+    require_once('./modele/voiture_bd.php');
+    if(!afficher_v_stock_bd($resultat)){
+        $msg="Echec d'affiche";
+        require ("./vue/voiture/loueur/liste_stock.tpl") ;
+    }
+
+    else{
+        require ("./vue/voiture/loueur/liste_stock.tpl") ;
+    }
 }
 
 

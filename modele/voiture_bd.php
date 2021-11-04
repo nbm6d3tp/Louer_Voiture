@@ -37,7 +37,7 @@ function entrer_bd($typeV,$nb,$caract,$photo){
 
 		if ($bool) return true; 
 		else return false;
-		}
+	}
 	
 	catch (PDOException $e) {
 		echo utf8_encode("Echec d'entree : " . $e->getMessage() . "\n");
@@ -46,5 +46,24 @@ function entrer_bd($typeV,$nb,$caract,$photo){
 
 }
 
+
+function afficher_v_stock_bd(&$resultat){
+	require ("./modele/connect.php");
+	$sql="SELECT * FROM `vehicule`";
+
+try {
+		$commande = $pdo->prepare($sql);
+		$bool=$commande->execute();
+
+		if ($bool) $resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
+		if ($resultat== null) return false; 
+		else return true;
+	}
+	
+	catch (PDOException $e) {
+		echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+		die(); // On arrête tout.
+	}
+}
 
 ?>
