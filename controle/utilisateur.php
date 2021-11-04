@@ -105,6 +105,7 @@ function inscrire(){ //fonction d'inscription
 			if(inscrire_bd($nom,$pseudo,$mdp,$email,$nomE,$adresseE,$resultat)){
 				$msg="Succes d'inscription"; 
 				$ins=true;
+				setcookie('id',$resultat['id'],time()+3000); //creation de cookies
 				unset($_SESSION['profil']);
 				unset($_SESSION['role']);
 				$_SESSION['profil']['nom'] = $resultat['nom'];
