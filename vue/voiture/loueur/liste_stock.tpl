@@ -9,10 +9,19 @@
 <body>
 	
     <?php
-        foreach($resultat as $voiture){
+        foreach($resultat as $cle => $voiture){
             echo "<b> Voiture: ".$voiture['type']."</b>";    
             echo '<br>';
             echo "Nombre en stock: ".$voiture['nb'];
+            echo '<br>';
+            echo "Changer nombre en stock: ".'
+            
+            <form action="index.php?controle=voiture&action=changer_stock&id='.$voiture['id'].'" method="post">
+                <input name="nb" type="text" style="width:50px">
+                <input type= "submit"  value="soumettre">
+            </form>
+
+            ';
             echo '<br>';
 
             $caract=json_decode($voiture['caract'],true);
@@ -31,6 +40,6 @@
     ?>
 
 
-    <div> <?php echo $msg; ?> </div>
+    <!-- <div> <?php echo $msg; ?> </div> -->
 	
 </body></html>
