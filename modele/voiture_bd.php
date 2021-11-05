@@ -66,4 +66,24 @@ try {
 	}
 }
 
+
+function changer_stock_bd($nb,$id){
+	require ("./modele/connect.php");
+	$sql="UPDATE `vehicule` SET nb=:nb where id=:id";
+	
+	try {
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':id', $id);
+		$commande->bindParam(':nb', $nb);
+		$bool=$commande->execute();
+
+		if ($bool) return true; 
+		else return false;
+	}
+	
+	catch (PDOException $e) {
+		echo utf8_encode("Echec de changer : " . $e->getMessage() . "\n");
+		die(); // On arrête tout.
+	}
+}
 ?>

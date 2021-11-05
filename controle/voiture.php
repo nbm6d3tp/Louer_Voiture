@@ -48,10 +48,8 @@ function entrer(){
 
 function afficher_v_stock(){
     $resultat=array();
-    $msg='';
     require_once('./modele/voiture_bd.php');
     if(!afficher_v_stock_bd($resultat)){
-        $msg="Echec d'affiche";
         require ("./vue/voiture/loueur/liste_stock.tpl") ;
     }
 
@@ -60,5 +58,21 @@ function afficher_v_stock(){
     }
 }
 
+function changer_stock(){
+    $id=$_GET['id'];
+    $nb= isset($_POST['nb'])?(intval($_POST['nb'])):'';
+
+    require_once('./modele/voiture_bd.php');
+    if(!changer_stock_bd($nb,$id)){
+        $url = "index.php?controle=voiture&action=afficher_v_stock";
+		header ("Location:" . $url) ;
+    }
+
+    else{
+        $url = "index.php?controle=voiture&action=afficher_v_stock";
+		header ("Location:" . $url) ;
+    }
+}
+  
 
 ?>
