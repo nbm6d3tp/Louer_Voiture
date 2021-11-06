@@ -81,20 +81,6 @@ function accueil_e() { //fonction affichier l'accueil pour les entreprises abonn
     } 
 }
 
-// function accueil_e_na(){
-// 	$resultat=array();
-//     require_once('./modele/voiture_bd.php');
-//     if(!afficher_v_stock_bd($resultat)){
-//         require ("./vue/utilisateur/entreprise/accueil_e_na.tpl");
-//     }
-
-//     else{
-//         require ("./vue/utilisateur/entreprise/accueil_e_na.tpl");
-//     } 
-	
-// }
-
-
 function inscrire(){ //fonction d'inscription
 
 	$nom=  isset($_POST['nom'])?($_POST['nom']):'';
@@ -151,7 +137,19 @@ function deconnecter(){ //fonction pour déconnecter
 }
 
 function infos_et_confirmer(){
+	$id=isset($_GET['voiture'])?$_GET['voiture']:'';
 
+	$voiture=array();
+    require_once('./modele/voiture_bd.php');
+    if(!afficher_v($id,$voiture)){
+        require ("./vue/voiture/entreprise/infos_et_confirmer.tpl") ;
+    }
+
+    else{
+        require ("./vue/voiture/entreprise/infos_et_confirmer.tpl") ;
+    } 
+
+	
 }
 
 function if_non_ident(){

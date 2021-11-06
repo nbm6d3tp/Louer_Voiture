@@ -25,7 +25,7 @@
 
         foreach($resultat as $cle => $voiture){
             if($_SESSION!=null){
-                echo '<a href="index.php?controle=utilisateur&action=infos_et_confirmer"><b> Voiture: '.$voiture["type"].'</b></a>';    
+                echo '<a href="index.php?controle=utilisateur&action=infos_et_confirmer&voiture='.$voiture['id'].'"><b> Voiture: '.$voiture["type"].'</b></a>';    
             }
             else{
                 echo '<a href="index.php?controle=utilisateur&action=if_non_ident"><b> Voiture: '.$voiture["type"].'</b></a>';     
