@@ -46,7 +46,7 @@ function ident_e() { //fonction ident pour les Entreprises
 			unset($_SESSION['role']);
 			$_SESSION['profil']['nom'] = $resultat['nom'];
 			$_SESSION['role']="entreprise";				
-			$url = "index.php?controle=utilisateur&action=accueil_e_a";
+			$url = "index.php?controle=utilisateur&action=accueil_e";
 			header ("Location:" . $url) ;
 		}
     }	
@@ -67,10 +67,32 @@ function accueil_l() { //fonction affichier l'accueil pour le Loueur, à faire (
 	require ("./vue/utilisateur/loueur/accueil_l.tpl");
 }
 
-function accueil_e_a() { //fonction affichier l'accueil pour les entreprises abonnés/non abonnés, à faire (Rémi) ***
-	$nom = $_SESSION['profil']['nom'];
-	require ("./vue/utilisateur/entreprise/accueil_e_a.tpl");
+function accueil_e() { //fonction affichier l'accueil pour les entreprises abonnés/non abonnés, à faire (Rémi) ***
+	$nom = isset($_SESSION['profil']['nom'])?$_SESSION['profil']['nom']:'';
+
+	$resultat=array();
+    require_once('./modele/voiture_bd.php');
+    if(!afficher_v_stock_bd($resultat)){
+        require ("./vue/utilisateur/entreprise/accueil_e.tpl");
+    }
+
+    else{
+        require ("./vue/utilisateur/entreprise/accueil_e.tpl");
+    } 
 }
+
+// function accueil_e_na(){
+// 	$resultat=array();
+//     require_once('./modele/voiture_bd.php');
+//     if(!afficher_v_stock_bd($resultat)){
+//         require ("./vue/utilisateur/entreprise/accueil_e_na.tpl");
+//     }
+
+//     else{
+//         require ("./vue/utilisateur/entreprise/accueil_e_na.tpl");
+//     } 
+	
+// }
 
 
 function inscrire(){ //fonction d'inscription
@@ -125,6 +147,15 @@ function inscrire(){ //fonction d'inscription
 
 function deconnecter(){ //fonction pour déconnecter
 	session_destroy();
+	ident_e();
+}
+
+function infos_et_confirmer(){
+
+}
+
+function if_non_ident(){
+	require("./vue/voiture/entreprise/if_non_ident.tpl");
 }
 
 ?>

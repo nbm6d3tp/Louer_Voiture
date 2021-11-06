@@ -10,7 +10,7 @@ if (isset($_GET['controle']) & isset($_GET['action'])) {
 	}
 else { //absence de paramètres : prévoir des valeurs par défaut
 	$controle = "utilisateur";
-	$action= "ident_e";
+	$action= "accueil_e";
 	}
 	
 //inclure le fichier php de contrôle 
