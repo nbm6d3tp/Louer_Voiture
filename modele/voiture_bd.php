@@ -66,6 +66,25 @@ try {
 	}
 }
 
+function afficher_v($id,&$resultat){
+	require ("./modele/connect.php");
+	$sql="SELECT * FROM `vehicule` where id=:id";
+
+	try {
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':id', $id);
+		$bool=$commande->execute();
+
+		if ($bool) $resultat = $commande->fetch(PDO::FETCH_ASSOC); //tableau d'enregistrements
+		if ($resultat== null) return false; 
+		else return true;
+	}
+	
+	catch (PDOException $e) {
+		echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+		die(); // On arrête tout.
+	}
+}
 
 function changer_stock_bd($nb,$id){
 	require ("./modele/connect.php");

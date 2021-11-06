@@ -29,9 +29,9 @@
 	<input type= "submit"  value="soumettre">
 	
 </form>
-
-
 	
 <div> <?php echo $msg; ?> </div>
+<br>
+<a href="index.php?controle=utilisateur&action=accueil_l">Retour a l'accueil</a>
 	
 </body></html>

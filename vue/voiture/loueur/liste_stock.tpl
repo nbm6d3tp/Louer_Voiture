@@ -7,7 +7,8 @@
 </head>
 
 <body>
-	
+	<a href="index.php?controle=utilisateur&action=accueil_l">Retour a l'accueil</a>
+    <br>
     <?php
         foreach($resultat as $cle => $voiture){
             echo "<b> Voiture: ".$voiture['type']."</b>";    
