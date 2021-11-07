@@ -17,6 +17,8 @@
             echo '<br>';
             echo '<a href="index.php?controle=utilisateur&action=deconnecter">deconnexion</a>';
             echo '<br>';
+            echo '<a href="index.php?controle=voiture&action=liste_louer">Liste de voitures loues</a>';
+            echo '<br>';
         }
         else{
             echo '<a href="index.php?controle=utilisateur&action=ident_e">Connexion</a>';

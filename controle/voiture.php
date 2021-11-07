@@ -74,5 +74,15 @@ function changer_stock(){
     }
 }
   
-
+function liste_louer(){
+    $resultat=array();
+    $ide=$_SESSION['profil']['id'];
+    require_once('./modele/voiture_bd.php');
+    if(!liste_louer_bd($ide, $resultat)){
+        require ("./vue/voiture/entreprise/liste_louer_e.tpl") ;
+    }
+    else{
+        require ("./vue/voiture/entreprise/liste_louer_e.tpl") ;
+    }
+}
 ?>

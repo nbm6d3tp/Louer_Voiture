@@ -20,6 +20,7 @@ function ident_l() { //fonction ident pour le Loueur
             unset($_SESSION['profil']);
 			unset($_SESSION['role']);
 			$_SESSION['profil']['nom'] = $resultat['nom'];
+			$_SESSION['profil']['id'] = $resultat['id'];
 			$_SESSION['role']="loueur";			
 			$url = "index.php?controle=utilisateur&action=accueil_l";
 			header ("Location:" . $url) ;
@@ -45,6 +46,7 @@ function ident_e() { //fonction ident pour les Entreprises
             unset($_SESSION['profil']);
 			unset($_SESSION['role']);
 			$_SESSION['profil']['nom'] = $resultat['nom'];
+			$_SESSION['profil']['id'] = $resultat['id'];
 			$_SESSION['role']="entreprise";				
 			$url = "index.php?controle=utilisateur&action=accueil_e";
 			header ("Location:" . $url) ;

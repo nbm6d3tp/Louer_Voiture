@@ -105,4 +105,24 @@ function changer_stock_bd($nb,$id){
 		die(); // On arrête tout.
 	}
 }
+
+function liste_louer_bd($ide, &$resultat){
+	require ("./modele/connect.php");
+	$sql="SELECT vehicule.*, facture.dateD,facture.dateF,facture.valeur FROM facture INNER JOIN vehicule ON vehicule.id=facture.idv WHERE facture.ide=:ide";
+
+try {
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':ide', $ide);
+		$bool=$commande->execute();
+
+		if ($bool) $resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
+		if ($resultat== null) return false; 
+		else return true;
+	}
+	
+	catch (PDOException $e) {
+		echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+		die(); // On arrête tout.
+	}
+}
 ?>

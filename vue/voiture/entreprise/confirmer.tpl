@@ -12,7 +12,6 @@ permet aux entreprises de choisir une date de début et de fin de location, de c
 </head>
 
 <body>
-	
     <?php
         echo "<b> Voiture: ".$voiture['type']."</b>";
         echo '<br>';
@@ -25,12 +24,14 @@ permet aux entreprises de choisir une date de début et de fin de location, de c
         echo "Etat: ".$voiture['etatL'];
         echo '<br>';
         echo '<image src="vue/photos_voitures/'.$voiture['photo'].'" width="200" height="200">';
+        echo '<br>';
+        echo '<p>Louer cette voiture de '.$dateD.' à '.$dateF.' ('.$nbjours.' jours)</p>';
+        echo '<br>';
+        echo '<p>À payer totalement: '.$prix.'</p>';
     ?>
+    <br>
+    <a href="index.php?controle=facture&action=confirmer&idv=<?php echo $idv;?>&dateD=<?php echo $timestampD;?>&dateF=<?php echo $timestampF;?>&valeur=<?php echo $prix;?>">Confirmer</a>
+    <a href="index.php?controle=utilisateur&action=infos_et_confirmer&voiture=<?php echo $idv;?>">Annuler</a>
 
-    <form action="index.php?controle=facture&action=louer&idv=<?php echo $voiture['id'];?>" method="post">
-      <input name="dateD" type="date" required> Date de debut <br/> 
-      <input name="dateF" type="date"> Date de fin <br/> 
-      <input type= "submit"  value="Louer">
-    </form>
-	
+    <div> <?php echo $msg; ?> </div>
 </body></html>

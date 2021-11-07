@@ -46,7 +46,7 @@
 	<div> <?php 
 		if($ins){
             $nom = $_SESSION['profil']['nom'];
-			echo "<a href='index.php?controle=utilisateur&action=accueil_e_a' title='connexion'>
+			echo "<a href='index.php?controle=utilisateur&action=accueil_e' title='connexion'>
 				Connexion </a>";
 		}
 	 ?> </div>
