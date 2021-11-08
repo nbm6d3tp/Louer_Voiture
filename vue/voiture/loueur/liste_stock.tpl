@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Inscription</title>
+  <title>Liste les voitures en stock</title>
 </head>
 
 <body>

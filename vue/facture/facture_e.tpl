@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Inscription</title>
+  <title>Facture de l'entreprise</title>
 </head>
 
 <body>

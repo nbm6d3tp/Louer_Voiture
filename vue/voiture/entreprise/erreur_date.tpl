@@ -8,7 +8,7 @@ permet aux entreprises de choisir une date de début et de fin de location, de c
 
 <head>
   <meta charset="utf-8">
-  <title>Inscription</title>
+  <title>Date erreur</title>
 </head>
 
 <body>

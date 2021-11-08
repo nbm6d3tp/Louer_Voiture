@@ -1,15 +1,10 @@
-//"Il faut connecter pour louer"
-//Retour af l'accueil
-//Se connecter
-//Inscrire
-
 
 <!doctype html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
-  <title>Inscription</title>
+  <title>N'est pas membre</title>
 </head>
 
 <body>

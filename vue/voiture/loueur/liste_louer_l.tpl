@@ -1,15 +1,10 @@
-<!-- La page contient la liste de tous les véhicules loués par un entreprise (c'est entreprise abonné qui utilise cette fonctionalité) -->
-
-
-<!-- //connextion
-//quand on clique sur un photo de voiture, un message sera affiché: "il faut connecter pour louer cette voiture" -->
 
 <!doctype html>
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
-  <title>Inscription</title>
+  <title>Liste de voiture louees</title>
 </head>
 
 <body>
