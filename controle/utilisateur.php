@@ -119,6 +119,7 @@ function inscrire(){ //fonction d'inscription
 				unset($_SESSION['profil']);
 				unset($_SESSION['role']);
 				$_SESSION['profil']['nom'] = $resultat['nom'];
+				$_SESSION['profil']['id'] = $resultat['id'];
 				$_SESSION['role']="entreprise";	
 				require ("./vue/utilisateur/entreprise/inscrire.tpl") ;
 			}
@@ -156,6 +157,11 @@ function infos_et_confirmer(){
 
 function if_non_ident(){
 	require("./vue/voiture/entreprise/if_non_ident.tpl");
+}
+
+
+function pas_droit(){
+	require("./vue/utilisateur/pas_droit.tpl");
 }
 
 ?>

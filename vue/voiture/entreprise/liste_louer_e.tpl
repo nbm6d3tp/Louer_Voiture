@@ -41,12 +41,15 @@
             echo '<br>';
             echo 'Date de fin: '.date("Y-m-d",strtotime($voiture['dateF']));
             echo '<br>';
-            echo 'Prix: '.$voiture['valeur']; 
+            echo 'À régler: '.$voiture['valeur']; 
             echo '<br>';
             echo '<br>';
             echo '<br>';
         }
     
     ?>
-	
+    <br>
+    <?php echo $msg;?>
+	<br>
+    <p>À régler total: <?php echo $somme ?></p>
 </body></html>

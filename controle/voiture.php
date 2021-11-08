@@ -77,12 +77,28 @@ function changer_stock(){
 function liste_louer(){
     $resultat=array();
     $ide=$_SESSION['profil']['id'];
+    $somme=0;
+    $msg='';
+    require_once('./modele/facture_bd.php');
     require_once('./modele/voiture_bd.php');
-    if(!liste_louer_bd($ide, $resultat)){
+    if(liste_louer_bd($ide, $resultat)&&calculer_facture_e_bd($ide,$somme,$reduction)){
+        if($reduction){
+            $msg='Vous avez une reduction de 10%';
+        }
         require ("./vue/voiture/entreprise/liste_louer_e.tpl") ;
     }
     else{
         require ("./vue/voiture/entreprise/liste_louer_e.tpl") ;
     }
 }
+
+function liste_louer_l(){
+    $resultat=array();
+    require_once('./modele/voiture_bd.php');
+    if(!liste_louer_l_bd($resultat)){
+        require ("./vue/voiture/loueur/liste_louer_l.tpl") ;
+    }
+    else{
+        require ("./vue/voiture/loueur/liste_louer_l.tpl") ;
+    }}
 ?>

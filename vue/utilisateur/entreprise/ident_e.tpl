@@ -27,6 +27,8 @@
 <div>
     <a href="index.php?controle=utilisateur&action=ident_l">Identification comme Loueur</a>
     <br>
+    <a href="index.php?controle=utilisateur&action=inscrire">Inscription</a>
+    <br>
     <a href="index.php?controle=utilisateur&action=accueil_e">Retour a l'accuel</a>
 </div>
 

@@ -25,12 +25,16 @@ permet aux entreprises de choisir une date de début et de fin de location, de c
         echo "Etat: ".$voiture['etatL'];
         echo '<br>';
         echo '<image src="vue/photos_voitures/'.$voiture['photo'].'" width="200" height="200">';
-    ?>
 
-    <form action="index.php?controle=facture&action=louer&idv=<?php echo $voiture['id'];?>" method="post">
-      <input name="dateD" type="date" required> Date de debut <br/> 
-      <input name="dateF" type="date"> Date de fin <br/> 
-      <input type= "submit"  value="Louer">
-    </form>
+        if($voiture['etatL']=="disponible"){
+          echo '<form action="index.php?controle=facture&action=louer&idv='.$voiture['id'].'" method="post">
+          <input name="dateD" type="date" required> Date de debut <br/> 
+          <input name="dateF" type="date"> Date de fin <br/> 
+          <input type= "submit"  value="Louer">
+        </form>';
+        }
+    
 	
+
+    ?>
 </body></html>

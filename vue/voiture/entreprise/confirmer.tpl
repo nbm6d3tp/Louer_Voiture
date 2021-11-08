@@ -25,7 +25,7 @@ permet aux entreprises de choisir une date de début et de fin de location, de c
         echo '<br>';
         echo '<image src="vue/photos_voitures/'.$voiture['photo'].'" width="200" height="200">';
         echo '<br>';
-        echo '<p>Louer cette voiture de '.$dateD.' à '.$dateF.' ('.$nbjours.' jours)</p>';
+        echo $msglouer;
         echo '<br>';
         echo '<p>À payer totalement: '.$prix.'</p>';
     ?>
